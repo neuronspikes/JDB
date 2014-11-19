@@ -44,7 +44,7 @@ public class Journal {
 		/*
 		 * 	Type 0 = Undefined Event Type (or RAW)
 		 *  Type 1 = PunchIn
-		 *  Type 2 = PunchOut Event							// On commente les Commentaires ;)
+		 *  Type 2 = PunchOut Event						
 		 *  Type 3 = Comment Or Note Event
 		 *  Type 4 = other
 		 * 
@@ -154,7 +154,7 @@ public class Journal {
 	*
 	* Sauvegarde sur l'appareil
 	*/
-	public boolean saveToDevice(Context ctx)
+	public boolean saveToDevice(Context ctx) 
 	{
 		//On récupère ce qu'il faut écrire...
 		String aSauvegarder = serialize(JournaldeBord);

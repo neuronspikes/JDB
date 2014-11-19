@@ -153,7 +153,7 @@ public class TimeTrackActivity extends Activity {
 	* Retourne true si le dernier élément de la liste est un punch In
 	*/
 	private boolean PunchedIn(){
-		if(!MainActivity.jdb.JournaldeBord.isEmpty()){//Si
+		if(!MainActivity.jdb.JournaldeBord.isEmpty()){
 			evenementJournal dernierEnevement =	MainActivity.jdb.findLastEvent();
 			if(dernierEnevement.type == 1){ //c'est un punch in
 				tempsDebut = System.currentTimeMillis();
