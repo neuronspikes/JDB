@@ -25,8 +25,8 @@ public class MainActivity extends Activity {
         }
          
         // Loader les sessions de travail précédente
-        //jdb.JournaldeBord = jdb.loadFromDevice(); 
-        //Afficher une Toast le nombre d'événement dans le Journal | Facultatif
+        jdb.JournaldeBord = jdb.loadFromDevice(); 
+        //Afficher une Toast le nombre d'événement dans le Journal 
         Toast toast;
 		Context context = this;
 		String text;

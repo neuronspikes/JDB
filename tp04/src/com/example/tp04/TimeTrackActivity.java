@@ -30,6 +30,15 @@ public class TimeTrackActivity extends Activity {
 		TextView inOuOutTxt;
 		static public long tempsDebut;
 		static public long tempsFin;
+		/*
+		 *  Types d'evenements
+		 * 	Type 0 = Undefined Event Type (or RAW)
+		 *  Type 1 = PunchIn
+		 *  Type 2 = PunchOut Event
+		 *  Type 3 = Comment Or Note Event
+		 *  Type 4 = other
+		 * 
+		 */
 		
 		
 	@Override
@@ -74,15 +83,6 @@ public class TimeTrackActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	/*
-	 *  Event Type
-	 * 	Type 0 = Undefined Event Type (or RAW)
-	 *  Type 1 = PunchIn
-	 *  Type 2 = PunchOut Event
-	 *  Type 3 = Comment Or Note Event
-	 *  Type 4 = other
-	 * 
-	 */
 	
 	/**
 	*
@@ -116,8 +116,6 @@ public class TimeTrackActivity extends Activity {
 		this.setBTstatus(); //Appel la désactivation des boutons
 		try {
 			//Affichage d'une Toast avec le temps travaillé
-			Long lastevent; 
-			lastevent = Long.parseLong(MainActivity.jdb.findLastEvent().toDataString()); //Trouve le dernier evenement de type 1
 			Context context = getApplicationContext();
 			CharSequence text = ("Vous avez travaillé : " + getDiffTime());
 			int duration = Toast.LENGTH_SHORT;
@@ -183,11 +181,10 @@ public class TimeTrackActivity extends Activity {
 	
 	/**
 	*
-	* @author Charles Perreault
+	* @author Charles Perreault, Anthony Pugliese, Michael Carignan-Jacob
 	*
-	* 
+	* Active ou désactive les boutons Commencer et Arreter, en fonction de si on a punché ou non.
 	*/
-	//Active ou désactive les boutons Commencer et Arreter, en fonction de si on a punché ou non.
 	private void setBTstatus()
 	{
 		if (PunchedIn()) { // Dans le cas que l'on aurait punché
