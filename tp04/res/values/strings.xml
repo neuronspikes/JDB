@@ -14,5 +14,7 @@
     <string name="bt_po">Arrêter</string>
     <string name="bt_ps">Pause !</string>
     <string name="tb_wl_text">Entrez la note ici</string>
+    <string name="MessageMBoxPunchOut">Impossible d\'afficher le toast</string>
+    <string name="TitreMBoxPunchOut">PunchOut - Probleme</string>
 
 </resources>
