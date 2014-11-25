@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
         if(jdb == null){// Un peu le "First Launch"
-        	jdb = new Journal("Journal1"); // On crée un nouveau Journal
+        	jdb = new Journal("Journal1", this); // On crée un nouveau Journal
 	        jdb.Path = getFilesDir(); // On lui donne la variable du Path où on enregistre les fichiers
         }
          
