@@ -14,5 +14,10 @@
     <string name="bt_po">Arrêter</string>
     <string name="bt_ps">Pause !</string>
     <string name="tb_wl_text">Entrez la note ici</string>
+    <string name="AvoirPuncheIn">Vous devez avoir punché IN pour écrire dans le journal</string>
+    <string name="NombreEventJournal">evenement aux Journal :</string>
+    <string name="venezDePunchOut">Vous venez de puncher Out</string>
+    <string name="venezDePunchIN">Vous venez de puncher IN</string>
+    <string name="VousAvezTravailler">Vous avez travaillé :</string>
 
 </resources>

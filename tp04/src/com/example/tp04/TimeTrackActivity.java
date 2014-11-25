@@ -96,7 +96,7 @@ public class TimeTrackActivity extends Activity {
 		String s = Long.toString(l); // Le parse
 		MainActivity.jdb.newEvent(1, s); // Pi le met dans la Liste
 		MainActivity.jdb.saveToDevice(this); // Enregistre la liste sur l'apareil
-		this.Toaster("Vous venez de puncher In"); //On affiche à l'utilisateur qu'il a puncher In
+		this.Toaster(getString(R.string.venezDePunchIN)); //On affiche à l'utilisateur qu'il a puncher In
 		this.setBTstatus(); //Appel la désactivation des boutons
 	}
 	
@@ -112,14 +112,14 @@ public class TimeTrackActivity extends Activity {
 		String s = Long.toString(stopTime); //le parse
 		MainActivity.jdb.newEvent(2, s); //L'enregistre comme type 2 dans la liste
 		MainActivity.jdb.saveToDevice(this); //Enregistre la liste sur l'appareil
-		this.Toaster("Vous venez de puncher Out"); //On affiche à l'utilisateur qu'il a puncher 
+		this.Toaster(getString(R.string.venezDePunchOut)); //On affiche à l'utilisateur qu'il a puncher 
 		this.setBTstatus(); //Appel la désactivation des boutons
 		try {
 			//Affichage d'une Toast avec le temps travaillé
 			Long lastevent; 
 			lastevent = Long.parseLong(MainActivity.jdb.findLastEvent().toDataString()); //Trouve le dernier evenement de type 1
 			Context context = getApplicationContext();
-			CharSequence text = ("Vous avez travaillé : " + getDiffTime());
+			CharSequence text = (getString(R.string.VousAvezTravailler)  + getDiffTime());
 			int duration = Toast.LENGTH_SHORT;
 			Toast toast = Toast.makeText(context, text, duration);
 			toast.setGravity(Gravity.TOP, 0, 15);

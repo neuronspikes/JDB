@@ -52,7 +52,7 @@ public class WriteLogActivity extends Activity {
 		Toast toast;
 		Context context = this;
 		String text;
-		text = ("Nombre d'evenement au Journal : " + String.valueOf(MainActivity.jdb.size()));
+		text = (getString(R.string.NombreEventJournal) + String.valueOf(MainActivity.jdb.size()));
 		toast = Toast.makeText(context, text, 1);
 		toast.setGravity(Gravity.TOP, 0, 15);
 		toast.show();

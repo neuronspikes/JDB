@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
         Toast toast;
 		Context context = this;
 		String text;
-		text = ("Nombre d'evenement au Journal : " + String.valueOf(MainActivity.jdb.size()));
+		text = (getString(R.string.NombreEventJournal)  + String.valueOf(MainActivity.jdb.size()));
 		toast = Toast.makeText(context, text, 1);
 		toast.setGravity(Gravity.TOP, 0, 15);
 		toast.show();
@@ -75,7 +75,7 @@ public class MainActivity extends Activity {
 			Toast toast;
 			Context context = this;
 			String text;
-			text = ("Vous devez avoir punché IN pour écrire dans le journal"); //qui est écrit ça dessus
+			text = getString(R.string.AvoirPuncheIn); //qui est écrit ça dessus
 			toast = Toast.makeText(context, text, 1);
 			toast.setGravity(Gravity.TOP, 0, 15);
 			toast.show();
