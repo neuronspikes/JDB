@@ -77,7 +77,7 @@ public class Journal {
 	 * @author Charles
 	 */
 	//Methode qui ajoute un evenement en background
-	 public void addEventHIDEMODE(Calendar bTime, Calendar eTime)
+	 public void addEventHIDEMODE(Calendar bTime, Calendar eTime, String Title)
 	    {
 		 	ArrayList<Calendar> Alcal = SetTimeOrderCorrectly(bTime, eTime);
 		 	
@@ -93,7 +93,7 @@ public class Journal {
 	        	endTime = eTime; // la fin =  à la fin
 	    	    
 	    	    
-	    	    event.put(Events.TITLE, "Titre");
+	    	    event.put(Events.TITLE, Title);
 	    	    event.put(Events.DESCRIPTION, "Description");
 	    	    event.put(Events.EVENT_LOCATION, "Just here");
 
