@@ -7,6 +7,7 @@ import java.util.TimeZone;
 import com.example.tp04putain.R;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -122,8 +123,14 @@ public class TimeTrackActivity extends Activity {
 			Toast toast = Toast.makeText(context, text, duration);
 			toast.setGravity(Gravity.TOP, 0, 15);
 			toast.show();
-		} catch (Exception e) {
+		}catch (Exception e) {
+			AlertDialog.Builder messBoxAlert = new AlertDialog.Builder(context);//crée un alert messageBox
+			messBoxAlert.setTitle((getString(R.string.TitreMBoxPunchOut)));
+			messBoxAlert.setMessage((getString(R.string.MessageMBoxPunchOut)));
+			messBoxAlert.setCancelable(true);
+			messBoxAlert.show();
 		}
+
 	}
 	
 	/**

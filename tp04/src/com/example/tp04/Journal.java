@@ -16,6 +16,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.example.tp04.evenementJournal;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
@@ -33,7 +34,7 @@ public class Journal {
 		this.context = context;
 		Name = name; 
 		JournaldeBord = new ArrayList<evenementJournal>(); 
-		CalendarHandler ch = new CalendarHandler();
+	//	CalendarHandler ch = new CalendarHandler();
 	}
 	
 	/**
@@ -222,10 +223,16 @@ public class Journal {
 			outputStream = context.openFileOutput(nomDuFichier, Context.MODE_PRIVATE); 
 			outputStream.write(aSauvegarder.getBytes()); //on écrit le contenu de la string
 			outputStream.close(); // fermeture du Fichier
-		} catch (Exception e) {
-			e.printStackTrace(); 	//Dans le cas d'une erreur quelquonque
-			return false; // en cas de problème on laisse savoir au autres méthodes du programme une erreur
+		}catch (IOException e){
+			//Normalement on ne devrait pas arriver ici, SI c'est le cas on affichera un messageBox explicant le problème
+			AlertDialog.Builder messBoxAlert = new AlertDialog.Builder(context);//crée un alert messageBox
+			messBoxAlert.setTitle("Save to Device - probleme");
+			messBoxAlert.setMessage("Le fichier n'a pas ete trouver (" + nomDuFichier + ")");
+			messBoxAlert.setCancelable(true);
+			messBoxAlert.show();
+			return false;
 		}
+
 		return true; // On retourne Vrai si il n'y a aucun problème et que on se rend jusqu'ici
 	}
 
@@ -235,7 +242,7 @@ public class Journal {
 	*
 	* Retourne une liste d'evenements Journals
 	*/
-	public List<evenementJournal> loadFromDevice()
+	public List<evenementJournal> loadFromDevice(Context ctx)
 	{
 		String _Name = "JDBenJSON"; // le même nom de fichier
 		File _Path = Path; // le même path
@@ -265,8 +272,13 @@ public class Journal {
 			Gson gson = new Gson();		
 			JournaldeBord = gson.fromJson(contenuDuFichier, typeJournal);			
 		}
-		} catch (IOException e) {
-			e.printStackTrace();
+		}catch (IOException e) {
+			//Normalement on ne devrait pas arriver ici, SI c'est le cas on affichera un messageBox explicant le problème
+			AlertDialog.Builder messBoxAlert = new AlertDialog.Builder(ctx);//crée un alert messageBox
+			messBoxAlert.setTitle("loadFromDevice - Probleme");
+			messBoxAlert.setMessage("Le fichier n'a pas ete trouver (" + _Name + ")");
+			messBoxAlert.setCancelable(true);
+			messBoxAlert.show();
 			return JournaldeBord;
 		}
 		return JournaldeBord;
