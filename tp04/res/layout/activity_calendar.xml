@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.tp04.Calendar" >
+
+    <EditText
+        android:id="@+id/Event_Txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:text="@string/event_text" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/edit_lieu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/edit_Description"
+        android:layout_below="@+id/edit_Description"
+        android:ems="10"
+        android:text="@string/edit_lieu" />
+
+    <EditText
+        android:id="@+id/edit_Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Event_Txt"
+        android:layout_alignRight="@+id/Event_Txt"
+        android:layout_below="@+id/Event_Txt"
+        android:ems="10"
+        android:text="@string/edit_description" />
+
+	<CalendarView
+	    android:id="@+id/calendar"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_above="@+id/bt_add_event"
+	    android:layout_alignParentEnd="false"
+	    android:layout_below="@+id/edit_lieu"
+	    android:onClick="DatePicked" />
+
+	<Button
+	    android:id="@+id/bt_cancel"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignParentLeft="true"
+	    android:onClick="returnToMainActivity"
+	    android:text="@string/bt_calendar_cancel" />
+
+	<Button
+	    android:id="@+id/bt_add_event"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignParentRight="true"
+	    android:onClick="BTaddEvent"
+	    android:text="@string/bt_calendar_add_event" />
+
+</RelativeLayout>
