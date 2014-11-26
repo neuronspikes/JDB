@@ -34,6 +34,14 @@
             android:name="com.example.tp04.WriteLogActivity"
             android:label="@string/title_activity_write_log" >
         </activity>
+        <activity
+            android:name="com.example.tp04.Calendar"
+            android:label="@string/title_activity_calendar"
+            android:parentActivityName="com.example.tp04.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.tp04.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

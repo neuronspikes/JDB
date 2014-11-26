@@ -82,6 +82,13 @@ public class MainActivity extends Activity {
 		}
     }
     
+    public void mCalendar(View view)
+    {
+    	Intent intent = new Intent (this, Calendar.class); 
+    	
+    	startActivity(intent);
+    }
+    
 	/**
 	*
 	* @author Anthony Pugliese, Michael Carignan-Jacob
