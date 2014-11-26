@@ -27,13 +27,17 @@ public class Journal {
 	public String Name;
 	public File Path;
 	public List<evenementJournal> JournaldeBord;
+	
+	CalendarHandler ch;
+	
 	Context context;
+	
 	//Constructeur
 	public Journal(String name, Context context){
 		this.context = context;
 		Name = name; 
 		JournaldeBord = new ArrayList<evenementJournal>(); 
-		CalendarHandler ch = new CalendarHandler();
+		ch = new CalendarHandler();
 	}
 	
 	/**
@@ -77,7 +81,7 @@ public class Journal {
 	 * @author Charles
 	 */
 	//Methode qui ajoute un evenement en background
-	 public void addEventHIDEMODE(Calendar bTime, Calendar eTime, String Title)
+	 public void addEventHIDEMODE(Calendar bTime, Calendar eTime, String Title, String Description, String Place)
 	    {
 		 	ArrayList<Calendar> Alcal = SetTimeOrderCorrectly(bTime, eTime);
 		 	
@@ -94,8 +98,8 @@ public class Journal {
 	    	    
 	    	    
 	    	    event.put(Events.TITLE, Title);
-	    	    event.put(Events.DESCRIPTION, "Description");
-	    	    event.put(Events.EVENT_LOCATION, "Just here");
+	    	    event.put(Events.DESCRIPTION, Description);
+	    	    event.put(Events.EVENT_LOCATION, Place);
 
 	    	    event.put(Events.DTSTART, beginTime.getTimeInMillis());
 	    	    event.put(Events.DTEND, endTime.getTimeInMillis());

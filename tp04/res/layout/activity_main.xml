@@ -34,4 +34,14 @@
         android:text="@string/bt_Read_Log"
         android:onClick="mReadLog" />
 
+    <Button
+        android:id="@+id/mcalendar_BT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/wl_bt_cancel"
+        android:layout_alignRight="@+id/wl_bt_cancel"
+        android:layout_below="@+id/wl_bt_cancel"
+        android:onClick="mCalendar"
+        android:text="@string/bt_calendar_txt" />
+
 </RelativeLayout>
