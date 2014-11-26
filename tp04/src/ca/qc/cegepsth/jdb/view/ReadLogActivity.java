@@ -1,9 +1,13 @@
-package com.example.tp04;
+package ca.qc.cegepsth.jdb.view;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.example.tp04putain.R;
+import ca.qc.cegepsth.jdb.R;
+import ca.qc.cegepsth.jdb.R.id;
+import ca.qc.cegepsth.jdb.R.layout;
+import ca.qc.cegepsth.jdb.R.menu;
+import ca.qc.cegepsth.jdb.model.EvenementJournal;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,21 +23,23 @@ public class ReadLogActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_read_log);
-		lv = (ListView)findViewById(R.id.rl_lv);
-		ArrayList<evenementJournal> listDesEvenements = new ArrayList<evenementJournal>();
-		
-		for (Iterator<evenementJournal> evenements = MainActivity.jdb.JournaldeBord.iterator(); evenements.hasNext();) {
-			evenementJournal event = evenements.next();
-			if(event.type == 1){ //Si c'est un punch in on ajoute dans son data [PUNCH IN]
-			event.Data = "[PUNCH IN]";
-			}
-			else if(event.type == 2){
+		lv = (ListView) findViewById(R.id.rl_lv);
+		ArrayList<EvenementJournal> listDesEvenements = new ArrayList<EvenementJournal>();
+
+		for (Iterator<EvenementJournal> evenements = MainActivity.jdb.JournaldeBord
+				.iterator(); evenements.hasNext();) {
+			EvenementJournal event = evenements.next();
+			if (event.type == 1) { // Si c'est un punch in on ajoute dans son
+									// data [PUNCH IN]
+				event.Data = "[PUNCH IN]";
+			} else if (event.type == 2) {
 				event.Data = "[PUNCH OUT]";
 			}
 			listDesEvenements.add(event);
-			lv.setAdapter(new ArrayAdapter<evenementJournal>(this, android.R.layout.simple_list_item_1, listDesEvenements));
+			lv.setAdapter(new ArrayAdapter<EvenementJournal>(this,
+					android.R.layout.simple_list_item_1, listDesEvenements));
 		}
-		
+
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package com.example.tp04;
+package ca.qc.cegepsth.jdb.model;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,10 +11,10 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
 
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.example.tp04.evenementJournal;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
@@ -27,14 +27,14 @@ import android.provider.CalendarContract.Events;
 public class Journal {
 	public String Name;
 	public File Path;
-	public List<evenementJournal> JournaldeBord;
+	public List<EvenementJournal> JournaldeBord;
 	public CalendarHandler ch;
 	Context context;
 	//Constructeur
 	public Journal(String name, Context context){
 		this.context = context;
 		Name = name; 
-		JournaldeBord = new ArrayList<evenementJournal>(); 
+		JournaldeBord = new ArrayList<EvenementJournal>(); 
 		CalendarHandler ch = new CalendarHandler();
 	}
 	
@@ -45,7 +45,7 @@ public class Journal {
 	* Crée un nouvel évènement
 	*/
 	public void newEvent(int EventType, String Data){
-		evenementJournal ejTemporaire = new evenementJournal(); // Un element tampon
+		EvenementJournal ejTemporaire = new EvenementJournal(); // Un element tampon
 		ejTemporaire.Timestamp = System.currentTimeMillis(); // le timestamp
 		ejTemporaire.type = EventType; // Le type d'event
 		/*
@@ -172,9 +172,9 @@ public class Journal {
 	*
 	* Retourne le dernier évènement dans la liste selon le type entré en paramètre
 	*/
-	public evenementJournal findLastEvent()
+	public EvenementJournal findLastEvent()
 	{
-		evenementJournal ejTemp = null;
+		EvenementJournal ejTemp = null;
 		int dernierElement = JournaldeBord.size() -1 ;
 			ejTemp = JournaldeBord.get(dernierElement);
 		return ejTemp;
@@ -186,7 +186,7 @@ public class Journal {
 	*
 	* Sérialise la liste d'évènement en format Json
 	*/
-	private String serialize(List<evenementJournal> listJDB)
+	private String serialize(List<EvenementJournal> listJDB)
 	{
 		
 		Gson gson = new Gson();
@@ -243,13 +243,13 @@ public class Journal {
 	*
 	* Retourne une liste d'evenements Journals
 	*/
-	public List<evenementJournal> loadFromDevice(Context ctx)
+	public List<EvenementJournal> loadFromDevice(Context ctx)
 	{
 		String _Name = "JDBenJSON"; // le même nom de fichier
 		File _Path = Path; // le même path
 		
 		//une liste vide
-		ArrayList<evenementJournal> JournaldeBord = new ArrayList<evenementJournal>();
+		ArrayList<EvenementJournal> JournaldeBord = new ArrayList<EvenementJournal>();
 		
 		try{
 		File serialisedObject = new File(_Path, _Name);
@@ -267,7 +267,7 @@ public class Journal {
 			bufferedReader.close();
 			String contenuDuFichier = sb.toString();
 			// Définition de la structure du fichier JSON
-			Type typeJournal = new TypeToken<ArrayList<evenementJournal>>() {
+			Type typeJournal = new TypeToken<ArrayList<EvenementJournal>>() {
 			}.getType();
 			// Création des instances a  partir du fichier, groupe en une collection
 			Gson gson = new Gson();		
