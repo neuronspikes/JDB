@@ -9,6 +9,7 @@ import com.example.tp04putain.R;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateFormat;
@@ -125,11 +126,13 @@ public class TimeTrackActivity extends Activity {
 			toast.show();
 		}catch (Exception e) {
 			AlertDialog.Builder messBoxAlert = new AlertDialog.Builder(context);//crée un alert messageBox
-			messBoxAlert.setTitle((getString(R.string.TitreMBoxPunchOut)));
-			messBoxAlert.setMessage((getString(R.string.MessageMBoxPunchOut)));
+//-------			messBoxAlert.setTitle((getString(R.string.TitreMBoxPunchOut)));
+//-------			messBoxAlert.setMessage((getString(R.string.MessageMBoxPunchOut)));
 			messBoxAlert.setCancelable(true);
 			messBoxAlert.show();
 		}
+		
+	
 
 	}
 	
