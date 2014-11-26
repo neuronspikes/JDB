@@ -28,13 +28,14 @@ public class Journal {
 	public String Name;
 	public File Path;
 	public List<evenementJournal> JournaldeBord;
+	public CalendarHandler ch;
 	Context context;
 	//Constructeur
 	public Journal(String name, Context context){
 		this.context = context;
 		Name = name; 
 		JournaldeBord = new ArrayList<evenementJournal>(); 
-	//	CalendarHandler ch = new CalendarHandler();
+		CalendarHandler ch = new CalendarHandler();
 	}
 	
 	/**

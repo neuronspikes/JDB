@@ -59,8 +59,6 @@ public final class R {
         public static final int write_log=0x7f070004;
     }
     public static final class string {
-        public static final int MessageMBoxPunchOut=0x7f05000d;
-        public static final int TitreMBoxPunchOut=0x7f05000e;
         public static final int action_settings=0x7f050002;
         public static final int app_name=0x7f050000;
         public static final int bt_Add_Log=0x7f050005;
