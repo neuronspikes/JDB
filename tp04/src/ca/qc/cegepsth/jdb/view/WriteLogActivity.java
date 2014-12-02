@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import ca.qc.cegepsth.jdb.*;
+import ca.qc.cegepsth.jdb.model.Photo;
 
 import android.app.Activity;
 import android.content.Context;
@@ -27,8 +28,8 @@ public class WriteLogActivity extends Activity {
 	EditText mEdit;
 	
 	//Variables pour photo. Francis Marion
-    private int width = 700;
-    private int height = 1024;
+    private int width = 350;
+    private int height = 512;
 	private static final int _RESULTAT_IMAGE_GALLERIE = 10;
 	private static final int _RESULTAT_IMAGE_NOUVELLE = 20;
 	private ImageView imageSelectionner;
@@ -144,6 +145,8 @@ public class WriteLogActivity extends Activity {
  			//Assigne l'image à la vue.
  			imageSelectionner.setImageBitmap(imageExistante);
  			
+ 			addToDB(imageExistante, mEdit.getText().toString());
+ 			
  		} catch (FileNotFoundException e) {
  			e.printStackTrace();
  			
@@ -166,6 +169,7 @@ public class WriteLogActivity extends Activity {
 			//Commence l'activité et donne le requestCode (variable private).
  			imageSelectionner.setImageBitmap(ImageNouvelle);
     	 
+ 			addToDB(ImageNouvelle,"");
      	}
   	   
     }
@@ -183,4 +187,13 @@ public class WriteLogActivity extends Activity {
     	//Commence l'activité et donne le requestCode (variable private).
     	startActivityForResult(cameraIntent, _RESULTAT_IMAGE_NOUVELLE);
     }
+    
+    private void addToDB(Bitmap image, String titre){
+    	
+    	Photo photo;
+    	
+    	photo = new Photo(titre, image);
+    	MainActivity.jdb.JournaldeBord.add(photo);
+    }
+    
 }
