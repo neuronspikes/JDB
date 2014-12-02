@@ -24,13 +24,7 @@ public class WriteLogActivity extends Activity {
 		setContentView(R.layout.activity_write_log);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.write_log, menu);
-		return true;
-	}
-
+	
 	/**
 	 * 
 	 * @author Charles Perreault
