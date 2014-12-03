@@ -13,17 +13,21 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class ReadLogActivity extends Activity {
-	ListView lv;
 
+	  ListView list;
+	  
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_read_log);
-		lv = (ListView) findViewById(R.id.rl_lv);
+		
+		
 		ArrayList<EvenementJournal> listDesEvenements = new ArrayList<EvenementJournal>();
 
 		for (Iterator<EvenementJournal> evenements = MainActivity.jdb.JournaldeBord
@@ -36,10 +40,20 @@ public class ReadLogActivity extends Activity {
 				event.Data = "[PUNCH OUT]";
 			}
 			listDesEvenements.add(event);
-			lv.setAdapter(new ArrayAdapter<EvenementJournal>(this,
-					android.R.layout.simple_list_item_1, listDesEvenements));
 		}
 
+		setContentView(R.layout.activity_read_log);
+		
+	    CustomList adapter = new CustomList(ReadLogActivity.this, listDesEvenements);
+	    list=(ListView)findViewById(R.id.rl_lv);
+	    list.setAdapter(adapter);
+	      /*  list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+	                @Override
+	                public void onItemClick(AdapterView<?> parent, View view,
+	                                        int position, long id) {
+	                    Toast.makeText(ReadLogActivity.this, "You Clicked at " +web[+ position], Toast.LENGTH_SHORT).show();
+	                }
+	            });*/
 	}
 
 	@Override
