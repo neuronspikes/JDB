@@ -23,5 +23,6 @@
     <string name="event_text">Entrez le Titre de L\'événement</string>
     <string name="edit_description">Description de l\'évenement</string>
     <string name="edit_lieu">Entrez le Lieu</string>
+    <color name="black">#585858</color>
 
 </resources>

@@ -24,9 +24,9 @@ public class ReadLogActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_read_log);
 		lv = (ListView) findViewById(R.id.rl_lv);
-		ArrayList<EvenementJournal> listDesEvenements = new ArrayList<EvenementJournal>();
+		ArrayList<EvenementJournal> listDesEvenements = new ArrayList<EvenementJournal>(); //pour naviger dans la liste
 
-		for (Iterator<EvenementJournal> evenements = MainActivity.jdb.JournaldeBord
+		for (Iterator<EvenementJournal> evenements = MainActivity.jdb.JournaldeBord // notion de generique, type generique
 				.iterator(); evenements.hasNext();) {
 			EvenementJournal event = evenements.next();
 			if (event.type == 1) { // Si c'est un punch in on ajoute dans son
