@@ -33,12 +33,7 @@ public class ReadLogActivity extends Activity {
 		for (Iterator<EvenementJournal> evenements = MainActivity.jdb.JournaldeBord
 				.iterator(); evenements.hasNext();) {
 			EvenementJournal event = evenements.next();
-			if (event.type == 1) { // Si c'est un punch in on ajoute dans son
-									// data [PUNCH IN]
-				event.Data = "[PUNCH IN]";
-			} else if (event.type == 2) {
-				event.Data = "[PUNCH OUT]";
-			}
+			
 			listDesEvenements.add(event);
 		}
 

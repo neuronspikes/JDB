@@ -40,40 +40,7 @@ public class Journal {
 	
 	/**
 	*
-	* @author Charles Perreault
-	*
-	* Crée un nouvel évènement
-	*/
-	public void newEvent(int EventType, String Data){
-		EvenementJournal ejTemporaire = new EvenementJournal(); // Un element tampon
-		ejTemporaire.Timestamp = System.currentTimeMillis(); // le timestamp
-		ejTemporaire.type = EventType; // Le type d'event
-		/*
-		 * 	Type 0 = Undefined Event Type (or RAW)
-		 *  Type 1 = PunchIn
-		 *  Type 2 = PunchOut Event	
-		 *  Type 3 = Comment Or Note Event
-		 *  Type 4 = other
-		 * 
-		 */
-		ejTemporaire.Data = Data;
-		
-		/*Chaque Evenement Journal est Unique
-		 *On leur assigne un ID à des fins pratiques
-		 */
-		if(JournaldeBord.isEmpty()){
-			ejTemporaire.ID = 1; // donc si c'est le premier item dans la collection
-		}
-		else{
-			ejTemporaire.ID = (JournaldeBord.get(JournaldeBord.size()-1).ID + 1); // sinon on trouve le dernier et on en ajoute un
-		}
-		
-		//Ajout à la Collection
-		JournaldeBord.add(ejTemporaire);
-		
-		//Ajout au Calendrier
-
-	}
+	
 	
 	/**
 	 * @author Charles

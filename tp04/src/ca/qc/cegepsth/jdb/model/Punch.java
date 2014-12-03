@@ -2,11 +2,12 @@ package ca.qc.cegepsth.jdb.model;
 
 import ca.qc.cegepsth.jdb.view.MainActivity;
 
-public class PunchIn extends EvenementJournal {
+public class Punch extends EvenementJournal {
+	public boolean isPunchedIn;
 	
-	public PunchIn() {
+	public Punch(boolean status) {
 		super();
-		super.Data = "[PUNCH IN]";
+		isPunchedIn = status;
 		super.Timestamp = System.currentTimeMillis();
 		if (MainActivity.jdb.size() == 0) {
 			//alors la liste est vide
@@ -19,4 +20,5 @@ public class PunchIn extends EvenementJournal {
 			super.ID = size;
 		}
 	}
+	
 }

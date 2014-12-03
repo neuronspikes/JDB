@@ -14,6 +14,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.ContactsContract.CommonDataKinds.Note;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -58,16 +59,10 @@ public class WriteLogActivity extends Activity {
 	
 	public void addNote(View view) {
 		mEdit = (EditText)findViewById(R.id.wl_tb_text);
-		/*
-		 * 	Type 0 = Undefined Event Type (or RAW)
-		 *  Type 1 = PunchIn Event
-		 *  Type 2 = PunchOut Event
-		 *  Type 3 = Comment Or Note Event
-		 *  Type 4 = other
-		 */
 		
-		//Ajoute un élément de Type 3 au Journal
-		MainActivity.jdb.newEvent(3, mEdit.getText().toString()); 
+		ca.qc.cegepsth.jdb.model.Note note;
+		note = new ca.qc.cegepsth.jdb.model.Note(mEdit.getText().toString(), mEdit.getText().toString());
+		MainActivity.jdb.JournaldeBord.add(note);
 		
 		//Écrit le journal sur l'appareil
 		MainActivity.jdb.saveToDevice(this); 

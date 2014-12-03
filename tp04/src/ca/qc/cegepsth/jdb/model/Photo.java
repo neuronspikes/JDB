@@ -8,8 +8,8 @@ import ca.qc.cegepsth.jdb.view.MainActivity;
 import android.graphics.Bitmap;
 
 public class Photo extends EvenementJournal {
-	String Title;
-	Bitmap bitmap;
+	public String Title;
+	public Bitmap bitmap;
 	
 	public Photo(String _title, Bitmap _bitmap)
 	{
