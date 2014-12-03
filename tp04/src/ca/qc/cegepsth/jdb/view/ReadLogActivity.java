@@ -24,9 +24,9 @@ public class ReadLogActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_read_log);
 		lv = (ListView) findViewById(R.id.rl_lv);
-		ArrayList<EvenementJournal> listDesEvenements = new ArrayList<EvenementJournal>();
+		ArrayList<EvenementJournal> listDesEvenements = new ArrayList<EvenementJournal>(); //pour naviger dans la liste
 
-		for (Iterator<EvenementJournal> evenements = MainActivity.jdb.JournaldeBord
+		for (Iterator<EvenementJournal> evenements = MainActivity.jdb.JournaldeBord // notion de generique, type generique
 				.iterator(); evenements.hasNext();) {
 			EvenementJournal event = evenements.next();
 			if (event.type == 1) { // Si c'est un punch in on ajoute dans son
@@ -42,12 +42,7 @@ public class ReadLogActivity extends Activity {
 
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.read_log, menu);
-		return true;
-	}
+	
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
