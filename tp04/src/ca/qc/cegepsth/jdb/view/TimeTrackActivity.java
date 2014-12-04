@@ -9,6 +9,7 @@ import ca.qc.cegepsth.jdb.R.id;
 import ca.qc.cegepsth.jdb.R.layout;
 import ca.qc.cegepsth.jdb.R.menu;
 import ca.qc.cegepsth.jdb.model.EvenementJournal;
+import ca.qc.cegepsth.jdb.model.Punch;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -86,9 +87,9 @@ public class TimeTrackActivity extends Activity {
 	 * 
 	 */
 	public void PunchIn(View view) {
-		long l = System.currentTimeMillis(); // Get le Time Tel Quel
-		String s = Long.toString(l); // Le parse
-		MainActivity.jdb.newEvent(1, s); // Pi le met dans la Liste
+
+		Punch PI = new Punch(true);
+		main.jdb.JournaldeBord.add(PI);
 		MainActivity.jdb.saveToDevice(this); // Enregistre la liste sur
 												// l'apareil
 		this.Toaster("Vous venez de puncher In"); // On affiche à l'utilisateur
@@ -103,10 +104,10 @@ public class TimeTrackActivity extends Activity {
 	 * 
 	 */
 	public void PunchOut(View view) {
-		long stopTime = System.currentTimeMillis(); // Get le Time
-		String s = Long.toString(stopTime); // le parse
-		MainActivity.jdb.newEvent(2, s); // L'enregistre comme type 2 dans la
-											// liste
+		
+		Punch PO = new Punch(false);
+		main.jdb.JournaldeBord.add(PO);
+		
 		MainActivity.jdb.saveToDevice(this); // Enregistre la liste sur
 												// l'appareil
 		this.Toaster("Vous venez de puncher Out"); // On affiche à l'utilisateur
@@ -162,14 +163,13 @@ public class TimeTrackActivity extends Activity {
 		if (!MainActivity.jdb.JournaldeBord.isEmpty()) {// Si
 			EvenementJournal dernierEnevement = MainActivity.jdb
 					.findLastEvent();
-			if (dernierEnevement.type == 1) { // c'est un punch in
-				tempsDebut = System.currentTimeMillis();
-				return true;
-			} else if (dernierEnevement.type == 3) { // Il vient d'écrire dans
-														// le journal, donc il
-														// est déjà punch IN.
-				return true;
+			
+			if (dernierEnevement instanceof Punch) {
+				Punch punch = (Punch) dernierEnevement;
+				return punch.isPunchedIn;
 			}
+			
+			
 		}
 		return false;
 	}
