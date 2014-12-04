@@ -4,13 +4,6 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import ca.qc.cegepsth.jdb.R;
-import ca.qc.cegepsth.jdb.R.id;
-import ca.qc.cegepsth.jdb.R.layout;
-import ca.qc.cegepsth.jdb.R.menu;
-import ca.qc.cegepsth.jdb.model.EvenementJournal;
-import ca.qc.cegepsth.jdb.model.Punch;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -18,13 +11,15 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AnalogClock;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import ca.qc.cegepsth.jdb.R;
+import ca.qc.cegepsth.jdb.model.EvenementJournal;
+import ca.qc.cegepsth.jdb.model.Punch;
 
 public class TimeTrackActivity extends Activity {
 	// Setting des variables de classes Utiles
@@ -52,7 +47,7 @@ public class TimeTrackActivity extends Activity {
 		btArreter = (Button) findViewById(R.id.PObuttonL);
 		inOuOutTxt = (TextView) findViewById(R.id.textInOuOut);
 		inOuOutTxt.setTextColor(Color.RED);
-		// Par défaut à la création il est désactivé
+		// Par dï¿½faut ï¿½ la crï¿½ation il est dï¿½sactivï¿½
 		if (PunchedIn()) {
 			btArreter.setEnabled(true);
 			btCommencer.setEnabled(false);
@@ -63,10 +58,8 @@ public class TimeTrackActivity extends Activity {
 			inOuOutTxt.setText("OUT");
 		}
 		this.context = this;
-		// setBTstatus(); // Mettre à on ou a off les boutons
+		// setBTstatus(); // Mettre ï¿½ on ou a off les boutons
 	}
-
-	
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -92,9 +85,9 @@ public class TimeTrackActivity extends Activity {
 		main.jdb.JournaldeBord.add(PI);
 		MainActivity.jdb.saveToDevice(this); // Enregistre la liste sur
 												// l'apareil
-		this.Toaster("Vous venez de puncher In"); // On affiche à l'utilisateur
+		this.Toaster("Vous venez de puncher In"); // On affiche ï¿½ l'utilisateur
 													// qu'il a puncher In
-		this.setBTstatus(); // Appel la désactivation des boutons
+		this.setBTstatus(); // Appel la dï¿½sactivation des boutons
 	}
 
 	/**
@@ -104,25 +97,25 @@ public class TimeTrackActivity extends Activity {
 	 * 
 	 */
 	public void PunchOut(View view) {
-		
+
 		Punch PO = new Punch(false);
 		main.jdb.JournaldeBord.add(PO);
-		
+
 		MainActivity.jdb.saveToDevice(this); // Enregistre la liste sur
 												// l'appareil
-		this.Toaster("Vous venez de puncher Out"); // On affiche à l'utilisateur
+		this.Toaster("Vous venez de puncher Out"); // On affiche ï¿½ l'utilisateur
 													// qu'il a puncher
-		this.setBTstatus(); // Appel la désactivation des boutons
+		this.setBTstatus(); // Appel la dï¿½sactivation des boutons
 		try {
-			// Affichage d'une Toast avec le temps travaillé
+			// Affichage d'une Toast avec le temps travaillï¿½
 			Context context = getApplicationContext();
-			CharSequence text = ("Vous avez travaillé : " + getDiffTime());
+			CharSequence text = ("Vous avez travaillï¿½ : " + getDiffTime());
 			int duration = Toast.LENGTH_SHORT;
 			Toast toast = Toast.makeText(context, text, duration);
 			toast.setGravity(Gravity.TOP, 0, 15);
 			toast.show();
 		} catch (Exception e) {
-			AlertDialog.Builder messBoxAlert = new AlertDialog.Builder(context);// crée
+			AlertDialog.Builder messBoxAlert = new AlertDialog.Builder(context);// crï¿½e
 																				// un
 																				// alert
 																				// messageBox
@@ -157,19 +150,18 @@ public class TimeTrackActivity extends Activity {
 	 * 
 	 * @author Anthony Pugliese, Michael Carignan-Jacob
 	 * 
-	 *         Retourne true si le dernier élément de la liste est un punch In
+	 *         Retourne true si le dernier ï¿½lï¿½ment de la liste est un punch In
 	 */
 	private boolean PunchedIn() {
 		if (!MainActivity.jdb.JournaldeBord.isEmpty()) {// Si
 			EvenementJournal dernierEnevement = MainActivity.jdb
 					.findLastEvent();
-			
+
 			if (dernierEnevement instanceof Punch) {
 				Punch punch = (Punch) dernierEnevement;
 				return punch.isPunchedIn;
 			}
-			
-			
+
 		}
 		return false;
 	}
@@ -192,15 +184,15 @@ public class TimeTrackActivity extends Activity {
 	 * 
 	 * @author Charles Perreault, Anthony Pugliese, Michael Carignan-Jacob
 	 * 
-	 *         Active ou désactive les boutons Commencer et Arreter, en fonction
-	 *         de si on a punché ou non.
+	 *         Active ou dï¿½sactive les boutons Commencer et Arreter, en fonction
+	 *         de si on a punchï¿½ ou non.
 	 */
 	private void setBTstatus() {
-		if (PunchedIn()) { // Dans le cas que l'on aurait punché
+		if (PunchedIn()) { // Dans le cas que l'on aurait punchï¿½
 			btCommencer.setEnabled(false);
 			btArreter.setEnabled(true);
 			inOuOutTxt.setText("IN");
-		} else { // Dans le cas où on aurait pas punché
+		} else { // Dans le cas oï¿½ on aurait pas punchï¿½
 			tempsFin = System.currentTimeMillis();
 			btCommencer.setEnabled(true);
 			btArreter.setEnabled(false);
