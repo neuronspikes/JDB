@@ -3,8 +3,8 @@ package ca.qc.cegepsth.jdb.model;
 import ca.qc.cegepsth.jdb.view.MainActivity;
 
 public class Note extends EvenementJournal {
-	String Title;
-	String Note;
+	public String Title;
+	public String Note;
 	
 	public Note(String _title, String _note)
 	{
@@ -33,5 +33,6 @@ public class Note extends EvenementJournal {
 		return str;
 	}
 	
+
 	
 }

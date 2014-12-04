@@ -6,6 +6,7 @@ import ca.qc.cegepsth.jdb.R.layout;
 import ca.qc.cegepsth.jdb.R.menu;
 import ca.qc.cegepsth.jdb.model.EvenementJournal;
 import ca.qc.cegepsth.jdb.model.Journal;
+import ca.qc.cegepsth.jdb.model.Punch;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -111,12 +112,10 @@ public class MainActivity extends Activity {
 		if (!MainActivity.jdb.JournaldeBord.isEmpty()) {// Si
 			EvenementJournal dernierEnevement = MainActivity.jdb
 					.findLastEvent();
-			if (dernierEnevement.type == 1) { // c'est un punch in
-				return true;
-			} else if (dernierEnevement.type == 3) { // Il vient d'écrire dans
-														// le journal, donc il
-														// est déjà punch IN.
-				return true;
+			
+			if (dernierEnevement instanceof Punch) {
+				Punch pi = (Punch) dernierEnevement;
+				return pi.isPunchedIn;
 			}
 		}
 		return false;
