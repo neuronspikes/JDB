@@ -45,4 +45,14 @@
         android:onClick="mCalendar"
         android:text="@string/bt_calendar_txt" />
 
+    <Button
+        android:id="@+id/bt_clean"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button3"
+        android:layout_alignRight="@+id/button3"
+        android:onClick="CleanJournal"
+        android:text="@string/bt_onclick" />
+
 </RelativeLayout>
