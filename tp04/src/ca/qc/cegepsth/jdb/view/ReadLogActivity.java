@@ -6,6 +6,7 @@ import java.util.Iterator;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import ca.qc.cegepsth.jdb.R;
 import ca.qc.cegepsth.jdb.model.EvenementJournal;
@@ -32,7 +33,9 @@ public class ReadLogActivity extends Activity {
 		CustomList adapter = new CustomList(ReadLogActivity.this,
 				listDesEvenements);
 		list = (ListView) findViewById(R.id.rl_lv);
-		list.setAdapter(adapter);
+		// list.setAdapter(adapter); // ne fonctionne pas
+		list.setAdapter(new ArrayAdapter<EvenementJournal>(this,
+				android.R.layout.simple_list_item_1, listDesEvenements));
 		/*
 		 * list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 		 * 
