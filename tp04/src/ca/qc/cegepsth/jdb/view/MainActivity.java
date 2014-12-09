@@ -133,4 +133,26 @@ public class MainActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
+	/**
+	 * @author Charles **/
+	public void CleanJournal(View view)
+	{
+		boolean result = jdb.DestroyAndClean();
+		
+		if (result) { // donc ça a marché
+			//On repart l'activité
+			Intent intent = new Intent(this, MainActivity.class);
+			startActivity(intent);
+		} else { // ça a planté :(
+			Toast toast;
+			Context context = this;
+			String text;
+			text = ("Erreur lors de l'effacement du journal");
+			toast = Toast.makeText(context, text, 1);
+			toast.setGravity(Gravity.CENTER, 0, 15);
+			toast.show();
+		}
+		
+	}
 }

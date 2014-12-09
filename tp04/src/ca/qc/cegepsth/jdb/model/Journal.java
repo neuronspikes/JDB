@@ -256,4 +256,30 @@ public class Journal {
 		}
 		return JournaldeBord;
 	}
+
+	public boolean DestroyAndClean()
+	{
+		try {
+			//On enleve le fichier de backup
+		   if (Path.isDirectory()) {
+				String[] children = Path.list();
+				
+				for (int i = 0; i < children.length; i++) {
+					new File(Path, children[i]).delete();
+				}
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		//On enleve les events de la collection un à un.. 
+		//Pas très optimisé mais fait la job en fin de session.
+		try {
+			for (int i = 0; i < JournaldeBord.size(); i++) {
+				JournaldeBord.remove(JournaldeBord.get(i));
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
 }

@@ -24,5 +24,6 @@
     <string name="edit_description">Description de l\'évenement</string>
     <string name="edit_lieu">Entrez le Lieu</string>
     <color name="black">#585858</color>
+    <string name="bt_onclick">Effacer le Journal</string>
 
 </resources>
